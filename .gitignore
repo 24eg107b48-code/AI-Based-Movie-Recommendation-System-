@@ -1,0 +1,32 @@
+# Node / Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.env.local
+frontend/.env.*.local
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+# Java / Spring Boot / STS / Eclipse
+backend/target/
+backend/.settings/
+backend/.project
+backend/.classpath
+backend/.factorypath
+backend/bin/
+backend/*.class
+backend/*.jar
+backend/*.war
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+
+# OS Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
