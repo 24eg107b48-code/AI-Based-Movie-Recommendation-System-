@@ -2,12 +2,13 @@
 FROM maven:3.9.9-eclipse-temurin-17 AS builder
 WORKDIR /app
 
-# Copy pom.xml and source code
+# Copy settings.xml, pom.xml and source code
+COPY settings.xml .
 COPY pom.xml .
 COPY src ./src
 
-# Package the application
-RUN mvn clean package -DskipTests
+# Package using Google Cloud CDN mirror (avoids Maven Central HTTP 429 rate-limiting on cloud hosts)
+RUN mvn clean package -s settings.xml -DskipTests --batch-mode
 
 # Runtime Stage
 FROM eclipse-temurin:17-jre-alpine

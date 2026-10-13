@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+    <mirrors>
+        <!-- High-speed Google Cloud CDN mirror for Maven Central (avoids HTTP 429 rate limiting on cloud shared IPs) -->
+        <mirror>
+            <id>google-maven-central</id>
+            <name>Google Maven Central Mirror</name>
+            <url>https://maven-central.storage-download.googleapis.com/maven2/</url>
+            <mirrorOf>central</mirrorOf>
+        </mirror>
+    </mirrors>
+
+    <profiles>
+        <profile>
+            <id>cloud-repositories</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <repositories>
+                <repository>
+                    <id>google-central</id>
+                    <url>https://maven-central.storage-download.googleapis.com/maven2/</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </repository>
+                <repository>
+                    <id>spring-releases</id>
+                    <url>https://repo.spring.io/release</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </repository>
+            </repositories>
+        </profile>
+    </profiles>
+</settings>
